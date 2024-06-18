@@ -8,10 +8,10 @@
 		<version>3.3.0</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.jimi</groupId>
+	<groupId>jimnorth1982.javagqlshowcase</groupId>
 	<artifactId>java-gql-showcase</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>gql-demo</name>
+	<name>java-gql-showcase</name>
 	<description>Showcase project for Java, GraphQL, and Spring Boot Microservices</description>
 	<properties>
 		<java.version>21</java.version>

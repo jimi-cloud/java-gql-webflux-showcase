@@ -1,4 +1,4 @@
-package jimnorth1982;
+package jimnorth1982.javagqlshowcase;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
