@@ -1,0 +1,23 @@
+type ToolType {
+    id: ID,
+    type: String
+    dailyRentalCharge: Float
+}
+type ToolCode {
+    id: ID,
+    code: String
+}
+type Brand {
+    id: ID,
+    name: String
+}
+type Tool {
+    id: ID,
+    toolCode: ToolCode,
+    toolType: ToolType,
+    brand: Brand
+}
+
+type Query {
+    findToolById(id: ID): Tool
+}

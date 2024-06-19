@@ -11,8 +11,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class ToolController {
     private final ToolRepository toolRepository;
+
     @QueryMapping
-    public Tool findById(@Argument String id) {
-        return null;
+    public Tool findToolById(@Argument Long id) {
+        return toolRepository.findById(id);
     }
 }
