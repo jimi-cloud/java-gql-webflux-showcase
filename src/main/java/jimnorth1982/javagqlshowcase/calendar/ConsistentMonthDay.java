@@ -17,7 +17,6 @@ public class ConsistentMonthDay implements Holiday {
 
     @Override
     public LocalDate forYear(Year year) {
-        System.out.println(year);
         return calculateHolidayForWeekendDate(LocalDate.of(year.getValue(), monthDay.getMonth(), monthDay.getDayOfMonth()));
     }
 
