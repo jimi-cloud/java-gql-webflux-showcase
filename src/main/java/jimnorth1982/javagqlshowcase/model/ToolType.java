@@ -20,4 +20,7 @@ public final class ToolType {
     private Long id;
     private String type;
     private BigDecimal dailyRentalCharge;
+    private boolean chargeWeekdays;
+    private boolean chargeWeekends;
+    private boolean chargeHolidays;
 }

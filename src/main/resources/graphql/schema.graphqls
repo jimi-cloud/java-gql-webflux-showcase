@@ -4,6 +4,9 @@ type ToolType {
     id: ID,
     type: String
     dailyRentalCharge: Float
+    chargeWeekdays: Boolean
+    chargeWeekends: Boolean
+    chargeHolidays: Boolean
 }
 
 type ToolCode {
@@ -35,6 +38,7 @@ type RentalAgreement {
     preDiscountCharge: Float
     discountAmount: Float
     finalCharge: Float
+    dailyRentalCharge: Float
 }
 
 input RentalAgreementInput {

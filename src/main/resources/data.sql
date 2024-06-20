@@ -22,7 +22,10 @@ create table tool_type
 (
     id                  bigint auto_increment primary key not null,
     type                varchar(128) UNIQUE,
-    daily_rental_charge decimal(10, 2)
+    daily_rental_charge decimal(10, 2),
+    charge_weekends     boolean default true,
+    charge_weekdays     boolean default true,
+    charge_holidays     boolean default true
 );
 
 create table tool
@@ -36,16 +39,17 @@ create table tool
 
 create table rental_agreement
 (
-    id             bigint auto_increment primary key not null,
-    tool_id        bigint references tool (id),
-    discount       decimal(3, 2)                     not null default 0.0,
-    check_out_date date                              not null default CURRENT_DATE,
-    rental_days    int                               not null check (rental_days > 0),
-    due_date date,
-    charge_days int,
-    pre_discount_charge decimal(16,2),
-    discount_amount decimal(16,2),
-    final_charge decimal(16,2)
+    id                  bigint auto_increment primary key not null,
+    tool_id             bigint references tool (id),
+    discount            decimal(3, 2)                     not null default 0.0,
+    check_out_date      date                              not null default CURRENT_DATE,
+    rental_days         int                               not null check (rental_days > 0),
+    due_date            date,
+    charge_days         int,
+    pre_discount_charge decimal(16, 2),
+    discount_amount     decimal(16, 2),
+    final_charge        decimal(16, 2),
+    daily_rental_charge decimal(16, 2)
 );
 
 insert into TOOL_CODE(CODE)
@@ -57,12 +61,12 @@ values ('JAKD');
 insert into TOOL_CODE(CODE)
 values ('CHNS');
 
-INSERT INTO TOOL_TYPE(TYPE, daily_rental_charge)
-values ('Jackhammer', 2.99);
-INSERT INTO TOOL_TYPE(TYPE, daily_rental_charge)
-values ('Ladder', 1.99);
-INSERT INTO TOOL_TYPE(TYPE, daily_rental_charge)
-values ('Chainsaw', 1.49);
+INSERT INTO TOOL_TYPE(TYPE, daily_rental_charge, charge_weekdays, charge_weekends, charge_holidays)
+values ('Jackhammer', 2.99, true, false, false);
+INSERT INTO TOOL_TYPE(TYPE, daily_rental_charge, charge_weekdays, charge_weekends, charge_holidays)
+values ('Ladder', 1.99, true, true, false);
+INSERT INTO TOOL_TYPE(TYPE, daily_rental_charge, charge_weekdays, charge_weekends, charge_holidays)
+values ('Chainsaw', 1.49, true, false, true);
 
 INSERT INTO BRAND(NAME)
 values ('Stihl');
