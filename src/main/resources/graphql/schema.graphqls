@@ -1,21 +1,31 @@
+scalar Date
+
 type ToolType {
     id: ID,
     type: String
     dailyRentalCharge: Float
 }
 type ToolCode {
-    id: ID,
+    id: ID
     code: String
 }
 type Brand {
-    id: ID,
+    id: ID
     name: String
 }
 type Tool {
-    id: ID,
-    toolCode: ToolCode,
-    toolType: ToolType,
+    id: ID
+    toolCode: ToolCode
+    toolType: ToolType
     brand: Brand
+}
+
+type RentalAgreement {
+    id: ID
+    tool: Tool
+    discount: Float
+    checkOutDate: Date
+    rentalDays: Int
 }
 
 type Query {
@@ -23,4 +33,6 @@ type Query {
     findAllTools: [Tool]
     findToolsByBrandId(brandId: ID): [Tool]
     findToolsByToolTypeId(toolTypeId: ID): [Tool]
+    findAllRentalAgreements: [RentalAgreement]
+    findRentalAgreementById(id: ID): RentalAgreement
 }
