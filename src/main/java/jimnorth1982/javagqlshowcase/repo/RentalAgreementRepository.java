@@ -7,5 +7,8 @@ import java.util.List;
 
 public interface RentalAgreementRepository extends Repository<RentalAgreement, Long> {
     public RentalAgreement findById(Long id);
+
     public List<RentalAgreement> findAll();
+
+    public RentalAgreement save(RentalAgreement rentalAgreementInput);
 }

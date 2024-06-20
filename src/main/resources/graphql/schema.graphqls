@@ -5,14 +5,18 @@ type ToolType {
     type: String
     dailyRentalCharge: Float
 }
+
 type ToolCode {
     id: ID
     code: String
 }
+
 type Brand {
     id: ID
     name: String
 }
+
+
 type Tool {
     id: ID
     toolCode: ToolCode
@@ -26,6 +30,18 @@ type RentalAgreement {
     discount: Float
     checkOutDate: Date
     rentalDays: Int
+    dueDate: Date
+    chargeDays: Int
+    preDiscountCharge: Float
+    discountAmount: Float
+    finalCharge: Float
+}
+
+input RentalAgreementInput {
+    toolId: Int!
+    discount: Float!
+    checkOutDate: Date!
+    rentalDays: Int!
 }
 
 type Query {
@@ -35,4 +51,8 @@ type Query {
     findToolsByToolTypeId(toolTypeId: ID): [Tool]
     findAllRentalAgreements: [RentalAgreement]
     findRentalAgreementById(id: ID): RentalAgreement
+}
+
+type Mutation {
+    createRentalAgreement(rentalAgreementInput: RentalAgreementInput): RentalAgreement
 }
