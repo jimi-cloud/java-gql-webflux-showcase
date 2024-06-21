@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public final class ToolType {
     @Id
-    private Integer id;
+    private Long id;
     private String type;
     private BigDecimal dailyRentalCharge;
     private boolean chargeWeekdays;

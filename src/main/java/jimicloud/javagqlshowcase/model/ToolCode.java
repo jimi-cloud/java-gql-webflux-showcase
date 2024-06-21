@@ -12,6 +12,6 @@ import org.springframework.data.relational.core.mapping.Table;
 @AllArgsConstructor
 public final class ToolCode {
     @Id
-    private Integer id;
+    private Long id;
     private String code;
 }

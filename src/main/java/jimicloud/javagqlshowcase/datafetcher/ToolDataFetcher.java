@@ -22,17 +22,17 @@ public class ToolDataFetcher {
     }
 
     @DgsQuery
-    public Mono<Tool> findToolById(@InputArgument Integer id) {
+    public Mono<Tool> findToolById(@InputArgument Long id) {
         return toolRepository.findById(id);
     }
 
     @DgsQuery
-    public Flux<Tool> findToolsByBrandId(@InputArgument Integer brandId) {
+    public Flux<Tool> findToolsByBrandId(@InputArgument Long brandId) {
         return toolRepository.findAllByBrandId(brandId);
     }
 
     @DgsQuery
-    public Flux<Tool> findToolsByToolTypeId(@InputArgument Integer toolTypeId) {
+    public Flux<Tool> findToolsByToolTypeId(@InputArgument Long toolTypeId) {
         return toolRepository.findAllByToolTypeId(toolTypeId);
     }
 }

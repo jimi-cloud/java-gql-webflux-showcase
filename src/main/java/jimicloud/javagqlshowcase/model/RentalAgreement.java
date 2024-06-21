@@ -24,9 +24,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RentalAgreement {
+
     @Id
-    private Integer id;
-    private Tool tool;
+    private Long id;
+    private Long toolId;
     private BigDecimal discount;
     private LocalDate checkOutDate;
     private int rentalDays;
@@ -37,12 +38,11 @@ public class RentalAgreement {
     private BigDecimal finalCharge;
     private BigDecimal dailyRentalCharge;
 
-    public RentalAgreement(Tool tool, RentalAgreementInput rentalAgreementInput) {
-        this.tool = tool;
+    public RentalAgreement(RentalAgreementInput rentalAgreementInput) {
+        this.toolId = rentalAgreementInput.toolId();
         this.discount = rentalAgreementInput.discount();
         this.checkOutDate = rentalAgreementInput.checkOutDate();
         this.rentalDays = rentalAgreementInput.rentalDays();
-        this.dailyRentalCharge = tool.getToolType().getDailyRentalCharge();
     }
 
     public RentalAgreement validate() throws ValidationException {
@@ -59,24 +59,24 @@ public class RentalAgreement {
         return this;
     }
 
-    public RentalAgreement finalizeAgreement(List<Holiday> holidays) {
+    public RentalAgreement finalizeAgreement(ToolType toolType, List<Holiday> holidays) {
         List<ChargeStrategy> chargeStrategies = new ArrayList<>();
-        if (this.tool.getToolType().isChargeWeekdays()) {
+        if (toolType.isChargeWeekdays()) {
             chargeStrategies.add(new ChargeWeekdays());
         }
 
-        if (this.tool.getToolType().isChargeWeekends()) {
+        if (toolType.isChargeWeekends()) {
             chargeStrategies.add(new ChargeWeekends());
         }
 
-        if (!this.tool.getToolType().isChargeHolidays()) {
+        if (!toolType.isChargeHolidays()) {
             chargeStrategies.add(new NoChargeHolidays(holidays));
         }
-
+        this.dailyRentalCharge = toolType.getDailyRentalCharge();
         this.dueDate = checkOutDate.plusDays(rentalDays - 1);
         this.chargeDays = reduceToSum(chargeStrategies, BigDecimal.ONE).intValue();
 
-        this.preDiscountCharge = reduceToSum(chargeStrategies, tool.getToolType().getDailyRentalCharge())
+        this.preDiscountCharge = reduceToSum(chargeStrategies, toolType.getDailyRentalCharge())
                 .setScale(2, RoundingMode.HALF_UP);
 
         this.discountAmount = preDiscountCharge

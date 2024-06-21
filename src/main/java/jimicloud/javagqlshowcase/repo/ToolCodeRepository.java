@@ -6,9 +6,9 @@ import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface ToolCodeRepository extends ReactiveCrudRepository<ToolCode, Integer> {
+public interface ToolCodeRepository extends ReactiveCrudRepository<ToolCode, Long> {
     @NotNull
-    Mono<ToolCode> findById(@NotNull Integer id);
+    Mono<ToolCode> findById(@NotNull Long id);
 
     @NotNull
     Flux<ToolCode> findAll();

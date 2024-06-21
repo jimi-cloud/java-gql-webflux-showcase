@@ -22,14 +22,36 @@ type Brand {
 
 type Tool {
     id: Int
+    toolCodeId: Int
+    toolTypeId: Int
+    brandId: Int
+}
+
+type ToolDTO {
+    id: Int
     toolCode: ToolCode
     toolType: ToolType
     brand: Brand
 }
 
+
 type RentalAgreement {
     id: Int
-    tool: Tool
+    toolId: Int
+    discount: Float
+    checkOutDate: Date
+    rentalDays: Int
+    dueDate: Date
+    chargeDays: Int
+    preDiscountCharge: Float
+    discountAmount: Float
+    finalCharge: Float
+    dailyRentalCharge: Float
+}
+
+type RentalAgreementDTO {
+    id: Int
+    tool: ToolDTO
     discount: Float
     checkOutDate: Date
     rentalDays: Int
@@ -53,10 +75,10 @@ type Query {
     findAllTools: [Tool]
     findToolsByBrandId(brandId: Int): [Tool]
     findToolsByToolTypeId(toolTypeId: Int): [Tool]
-    findAllRentalAgreements: [RentalAgreement]
-    findRentalAgreementById(id: Int): RentalAgreement
+    findAllRentalAgreements: [RentalAgreementDTO]
+    findRentalAgreementById(id: Int): RentalAgreementDTO
 }
 
 type Mutation {
-    createRentalAgreement(rentalAgreementInput: RentalAgreementInput): RentalAgreement
+    createRentalAgreement(rentalAgreementInput: RentalAgreementInput): RentalAgreementDTO
 }
