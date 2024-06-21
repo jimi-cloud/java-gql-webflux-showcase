@@ -1,7 +1,7 @@
 scalar Date
 
 type ToolType {
-    id: ID,
+    id: Int,
     type: String
     dailyRentalCharge: Float
     chargeWeekdays: Boolean
@@ -10,25 +10,25 @@ type ToolType {
 }
 
 type ToolCode {
-    id: ID
+    id: Int
     code: String
 }
 
 type Brand {
-    id: ID
+    id: Int
     name: String
 }
 
 
 type Tool {
-    id: ID
+    id: Int
     toolCode: ToolCode
     toolType: ToolType
     brand: Brand
 }
 
 type RentalAgreement {
-    id: ID
+    id: Int
     tool: Tool
     discount: Float
     checkOutDate: Date
@@ -49,12 +49,12 @@ input RentalAgreementInput {
 }
 
 type Query {
-    findToolById(id: ID): Tool
+    findToolById(id: Int): Tool
     findAllTools: [Tool]
-    findToolsByBrandId(brandId: ID): [Tool]
-    findToolsByToolTypeId(toolTypeId: ID): [Tool]
+    findToolsByBrandId(brandId: Int): [Tool]
+    findToolsByToolTypeId(toolTypeId: Int): [Tool]
     findAllRentalAgreements: [RentalAgreement]
-    findRentalAgreementById(id: ID): RentalAgreement
+    findRentalAgreementById(id: Int): RentalAgreement
 }
 
 type Mutation {

@@ -1,36 +1,36 @@
 package jimnorth1982.javagqlshowcase.controller;
 
+import com.netflix.graphql.dgs.DgsComponent;
+import com.netflix.graphql.dgs.DgsQuery;
+import com.netflix.graphql.dgs.InputArgument;
 import jimnorth1982.javagqlshowcase.model.Tool;
 import jimnorth1982.javagqlshowcase.repo.ToolRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.graphql.data.method.annotation.Argument;
-import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
 @AllArgsConstructor
-@Controller
+@DgsComponent
 public class ToolController {
     private final ToolRepository toolRepository;
 
-    @QueryMapping
-    public Tool findToolById(@Argument Long id) {
+    @DgsQuery
+    public Tool findToolById(@InputArgument Integer id) {
         return toolRepository.findById(id);
     }
 
-    @QueryMapping
+    @DgsQuery
     public List<Tool> findAllTools() {
         return toolRepository.findAll();
     }
 
-    @QueryMapping
-    public List<Tool> findToolsByBrandId(@Argument Long brandId) {
+    @DgsQuery
+    public List<Tool> findToolsByBrandId(@InputArgument Integer brandId) {
         return toolRepository.findAllByBrandId(brandId);
     }
 
-    @QueryMapping
-    public List<Tool> findToolsByToolTypeId(@Argument Long toolTypeId) {
+    @DgsQuery
+    public List<Tool> findToolsByToolTypeId(@InputArgument Integer toolTypeId) {
         return toolRepository.findAllByToolTypeId(toolTypeId);
     }
 }

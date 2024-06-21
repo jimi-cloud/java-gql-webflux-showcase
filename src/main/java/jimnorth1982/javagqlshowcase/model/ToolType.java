@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 public final class ToolType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String type;
     private BigDecimal dailyRentalCharge;
     private boolean chargeWeekdays;

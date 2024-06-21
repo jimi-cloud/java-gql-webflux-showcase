@@ -25,7 +25,7 @@ import java.util.List;
 public class RentalAgreement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @ManyToOne
     private Tool tool;
     private BigDecimal discount;

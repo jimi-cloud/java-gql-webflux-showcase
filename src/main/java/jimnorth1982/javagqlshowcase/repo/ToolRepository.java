@@ -5,12 +5,12 @@ import org.springframework.data.repository.Repository;
 
 import java.util.List;
 
-public interface ToolRepository extends Repository<Tool, Long> {
-    Tool findById(Long id);
+public interface ToolRepository extends Repository<Tool, Integer> {
+    Tool findById(Integer id);
 
-    List<Tool> findAllByBrandId(Long brand);
+    List<Tool> findAllByBrandId(Integer brand);
 
-    List<Tool> findAllByToolTypeId(Long toolTypeId);
+    List<Tool> findAllByToolTypeId(Integer toolTypeId);
 
     List<Tool> findAll();
 }

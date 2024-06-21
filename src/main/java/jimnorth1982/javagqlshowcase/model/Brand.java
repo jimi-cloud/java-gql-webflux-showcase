@@ -15,6 +15,6 @@ import lombok.NoArgsConstructor;
 public final class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String name;
 }

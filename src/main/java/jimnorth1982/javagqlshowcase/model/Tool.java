@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public final class Tool {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @ManyToOne
     private ToolCode toolCode;
     @ManyToOne
