@@ -1,6 +1,6 @@
-# java-gql-showcase
+# java-gql-webflux-showcase
 Project for showcasing GraphQL integration with Java Microservices using Spring Boot
-https://github.com/jimi-cloud/java-gql-showcase
+https://github.com/jimi-cloud/java-gql-webflux-showcase
 
 # Overview
 - Start with serving a catalog of tools
