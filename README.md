@@ -1,6 +1,6 @@
 # java-gql-showcase
 Project for showcasing GraphQL integration with Java Microservices using Spring Boot
-https://github.com/jimnorth1982/java-gql-showcase.git
+https://github.com/jimi-cloud/java-gql-showcase
 
 # Overview
 - Start with serving a catalog of tools
