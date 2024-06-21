@@ -4,7 +4,6 @@ import com.netflix.graphql.dgs.DgsComponent;
 import com.netflix.graphql.dgs.DgsMutation;
 import com.netflix.graphql.dgs.DgsQuery;
 import com.netflix.graphql.dgs.InputArgument;
-import graphql.schema.DataFetchingEnvironment;
 import jimnorth1982.javagqlshowcase.model.RentalAgreement;
 import jimnorth1982.javagqlshowcase.model.RentalAgreementInput;
 import jimnorth1982.javagqlshowcase.model.Tool;
@@ -24,17 +23,17 @@ public class RentalAgreementDataFetcher {
     private final ToolRepository toolRepository;
 
     @DgsQuery
-    public RentalAgreement findRentalAgreementById(DataFetchingEnvironment dfe, @InputArgument Integer id) {
+    public RentalAgreement findRentalAgreementById(@InputArgument Integer id) {
         return rentalAgreementRepository.findById(id);
     }
 
     @DgsQuery
-    public List<RentalAgreement> findAllRentalAgreements(DataFetchingEnvironment dfe) {
+    public List<RentalAgreement> findAllRentalAgreements() {
         return rentalAgreementRepository.findAll();
     }
 
     @DgsMutation
-    public RentalAgreement createRentalAgreement(DataFetchingEnvironment dfe, @InputArgument RentalAgreementInput rentalAgreementInput) throws ValidationException {
+    public RentalAgreement createRentalAgreement(@InputArgument RentalAgreementInput rentalAgreementInput) throws ValidationException {
         Tool tool = toolRepository.findById(rentalAgreementInput.toolId());
         RentalAgreement rentalAgreement = new RentalAgreement(tool, rentalAgreementInput)
                 .validate()
